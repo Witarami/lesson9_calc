@@ -1,0 +1,26 @@
+.container {
+    background-image:url(https://images.unsplash.com/photo-1598414160330-a9da11bcb52d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80)
+}
+
+.calc-row {
+    height: 100vh;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.input-window {
+    text-align: end;
+    color: white;
+    font-size: x-large;
+}
+
+.form-group {
+    background-color: rgb(105, 104, 104);
+}
+
+.card-body {
+    background-color: rgb(0, 0, 0);
+}
+
+#inputWindow {
+    background-color: rgb(93, 134, 90);
+}
