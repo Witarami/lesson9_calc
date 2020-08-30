@@ -1,5 +1,4 @@
 let lastOperand = 0;
-let secondOperand = 0;
 let operation = null;
 
 const inputWindow = document.getElementById('inputWindow');
@@ -81,10 +80,9 @@ document.getElementById('btn_8').addEventListener('click', function () {
     if (inputWindow.value === '0'){
         const result = 0+8;
         inputWindow.value = result;
-        secondOperand = result;
 
     } else {
-        secondOperand = inputWindow.value += '8';
+        inputWindow.value += '8';
     }
 })
 
@@ -92,13 +90,10 @@ document.getElementById('btn_9').addEventListener('click', function () {
     if (inputWindow.value === '0'){
         const result = 0 + 9;
         inputWindow.value = result;
-        secondOperand = result;
     }    
     else {
         inputWindow.value += '9';
-        secondOperand += '9'; 
     }
-    
 })
 
 document.getElementById('btn_0').addEventListener('click', function () {
@@ -124,25 +119,29 @@ document.getElementById('btn_rdc').addEventListener('click', function () {
 document.getElementById('btn_dvsn').addEventListener('click', function () {
     lastOperand = parseFloat(inputWindow.value);
     operation = 'dvsn';
+    secondWindow.value = inputWindow.value + '/';
     inputWindow.value = '';
 })
 
 document.getElementById('btn_mltpl').addEventListener('click', function () {
     lastOperand = parseFloat(inputWindow.value);
     operation = 'mltpl';
+    secondWindow.value = inputWindow.value + '*';
     inputWindow.value = '';
 })
 
 document.getElementById('btn_def').addEventListener('click', function () {
     lastOperand = parseFloat(inputWindow.value);
     operation = 'def';
+    secondWindow.value = inputWindow.value + '-';
     inputWindow.value = '';
 })
 
 document.getElementById('btn_sum').addEventListener('click', function () {
     lastOperand = parseFloat(inputWindow.value);
     operation = 'sum';
-    inputWindow.value = inputWindow.value + '+';
+    secondWindow.value = inputWindow.value + '+';
+    inputWindow.value = '';
     secondOperand = 0;
 })
 
@@ -155,26 +154,30 @@ document.getElementById('btn_calc').addEventListener('click', function () {
         const result = lastOperand / parseFloat(inputWindow.value);
         operation = null; 
         lastOperand = 0;
+        secondWindow.value = secondWindow.value + inputWindow.value + '=';
         inputWindow.value = result.toPrecision(9);
     }
     if (operation === 'mltpl'){
         const result = lastOperand * parseFloat(inputWindow.value);
         operation = null;
         lastOperand = 0;
+        secondWindow.value = secondWindow.value + inputWindow.value + '=';
         inputWindow.value = result.toPrecision(9);
     }
     if (operation === 'def'){
         const result = lastOperand - parseFloat(inputWindow.value);
         operation = null;
         lastOperand = 0;
+        secondWindow.value = secondWindow.value + inputWindow.value + '=';
         inputWindow.value = result.toPrecision(9);
     }   
     if (operation === 'sum'){
-        const result = lastOperand + parseFloat(secondOperand);
+        const result = lastOperand + parseFloat(inputWindow.value);
         operation = null;
         lastOperand = 0;
-        secondOperand = 0;
-        inputWindow.value = inputWindow.value + '=' + result.toPrecision(9);
+        secondWindow.value = secondWindow.value + inputWindow.value + '=';
+        inputWindow.value = result.toPrecision(9);
+        
     }    
 })
 
@@ -182,4 +185,5 @@ document.getElementById('btn_clr').addEventListener('click', function () {
     lastOperand = 0;
     operation = null;
     inputWindow.value = '0';
+    secondWindow.value = '0';
 })
